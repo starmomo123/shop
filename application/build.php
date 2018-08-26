@@ -42,7 +42,7 @@ return [
     ],
     'bis'      =>  [
         '__dir__'    =>   ['controller', 'model', 'view'],
-        'controller' =>   ['Index'],
+        'controller' =>   ['Index', 'Login'],
         'view'       =>   ['index/index']
     ]
 

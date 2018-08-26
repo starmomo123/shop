@@ -1,7 +1,6 @@
 <?php
 namespace app\admin\controller;
 
-use phpmailer\Mail;
 use think\Controller;
 
 class Index extends Controller
@@ -19,7 +18,7 @@ class Index extends Controller
         $to = '3117748742@qq.com';
         $title = '今天天气很好';
         $content = '是的哈～～～～';
-        $ret = Mail::send($to, $title, $content);
+        $ret = \phpmailer\Mail::send($to, $title, $content);
         return $ret;
     }
 }
