@@ -8,3 +8,4 @@
 
 Route::get('getSecondCity', 'api/city/getSecondCity');
 Route::get('getSecondCategory', 'api/Category/getSecondCategory');
+Route::post('uploadImage', 'api/Image/uploadImage');

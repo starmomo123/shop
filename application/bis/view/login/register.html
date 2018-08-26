@@ -35,7 +35,11 @@
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-2">缩略图：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <input id="file_upload"  type="file" multiple="true" >
+                <div>
+                    <!--用来存放item-->
+                    <div id="fileList" class="uploader-list"></div>
+                    <div id="filePicker">选择图片</div>
+                </div>
                 <img style="display: none" id="upload_org_code_img" src="" width="150" height="150">
                 <input id="file_upload_image" name="logo" type="hidden" multiple="true" value="">
             </div>
@@ -43,7 +47,11 @@
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-2">营业执照：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <input id="file_upload_other"  type="file" multiple="true" >
+                <div>
+                    <!--用来存放item-->
+                    <div id="fileListOther" class="uploader-list"></div>
+                    <div id="filePickerOther">选择图片</div>
+                </div>
                 <img style="display: none" id="upload_org_code_img_other" src="" width="150" height="150">
                 <input id="file_upload_image_other" name="licence_logo" type="hidden" multiple="true" value="">
             </div>
