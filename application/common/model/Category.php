@@ -32,8 +32,7 @@ class Category extends Model
         ];
 
         $order = [
-            'id' => 'desc',
-            'listorder' => 'asc'
+            'listorder' => 'desc'
         ];
 
         $category = $this->where($condition)
@@ -54,8 +53,7 @@ class Category extends Model
         ];
 
         $order = [
-            'id' => 'desc',
-            'listorder' => 'asc'
+            'listorder' => 'desc'
         ];
 
         $category = $this->where($condition)

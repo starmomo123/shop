@@ -49,7 +49,7 @@ class Category extends Controller
             if(!$this->validate->scene('add')->check($data)) {
                 $this->error($this->validate->getError());
             }
-            $ret = $this->model->save($data, ['id' => $data['id']]);
+            $ret = $this->model->save($data, ['id' => intval($data['id'])]);
             if($ret) {
                 $this->success('修改分类成功');
             }else {
