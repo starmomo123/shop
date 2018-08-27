@@ -12,7 +12,7 @@ class Login extends Controller
     private $bis;
     private $bisLocation;
     private $bisAccount;
-    public function initialize() {
+    protected function initialize() {
         $this->bisValidate = validate('Bis');
         $this->city = model('city');
         $this->category = model('category');
@@ -20,8 +20,36 @@ class Login extends Controller
         $this->bisLocation = model('BisLocation');
         $this->bisAccount = model('BisAccount');
     }
-    public function index() {
-        return $this->fetch();
+    public function index(Request $request) {
+        $uid = session('bis_uid');
+        if($uid) {
+            $this->redirect(url('bis/index/index'));
+        }
+        if($request->isPost()) {
+            $data = input('post.');
+            if(!$this->bisValidate->scene('bis_account')->check($data)) {
+                $this->error($this->bisValidate->getError());
+            }
+            $bisAccount = $this->bisAccount->get(['username' => $data['username']]);
+            if(empty($bisAccount)) {
+                $this->error('该商户不存在');
+            }
+            if(md5($data['password']) != $bisAccount['password']) {
+                $this->error('密码不正确');
+            }
+            $last_login_ip = $request->ip();
+            $last_login_time = time();
+            $loginInfo = [
+                'last_login_ip' => $last_login_ip,
+                'last_login_time' => $last_login_time
+            ];
+            $this->bisAccount->save($loginInfo, ['id' => $bisAccount['id']]);
+            session('bis_uid', $bisAccount['id']);
+            cookie('isLogin', 1);
+            return redirect(url('bis/index/index'));
+        }else {
+            return $this->fetch();
+        }
     }
 
     public function register(Request $request) {
@@ -90,7 +118,6 @@ class Login extends Controller
             if(!$ret) {
                 $this->error('新增管理员失败');
             }
-
             $this->success('新增成功');
         }else {
             $city = [];
@@ -99,5 +126,11 @@ class Login extends Controller
             $this->category->getNormalFirstCategory($category);
             return $this->fetch('', compact('city', 'category'));
         }
+    }
+
+    public function logout() {
+        session('bis_uid',null);
+        cookie('isLogin', null);
+        return redirect('bis/login/index');
     }
 }

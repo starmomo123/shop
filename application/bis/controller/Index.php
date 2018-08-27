@@ -1,12 +1,12 @@
 <?php
 namespace app\bis\controller;
 
-use think\Controller;
 
 class Index extends Controller
 {
     public function index() {
-        return $this->fetch();
+        $username = $this->user['username'];
+        return $this->fetch('', compact('username'));
     }
 
     public function welcome() {
