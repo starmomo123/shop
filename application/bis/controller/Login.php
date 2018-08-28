@@ -18,7 +18,7 @@ class Login extends Controller
         $this->category = model('category');
         $this->bis = model('bis');
         $this->bisLocation = model('BisLocation');
-        $this->bisAccount = model('BisAccount');
+        $this->bisAccount = model('bis_account');
     }
     public function index(Request $request) {
         $uid = session('bis_uid');

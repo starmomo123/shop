@@ -17,7 +17,7 @@ class Deal extends Controller
         $this->category = model('category');
         $this->bis = model('bis');
         $this->bisLocation = model('BisLocation');
-        $this->bisAccount = model('BisAccount');
+        $this->bisAccount = model('bis_account');
         $this->deal = model('deal');
     }
     public function index() {
