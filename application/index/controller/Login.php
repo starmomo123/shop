@@ -36,7 +36,7 @@ class Login extends Controller
             ];
 
             $this->user->save($updateData, ['id' => $ret['id']]);
-            session('bis_uid', $ret['id']);
+            session('uid', $ret['id']);
             cookie('isLogin', 1);
             return redirect(url('index/index/index'));
 

@@ -44,6 +44,9 @@ class Login extends Controller
                 'last_login_time' => $last_login_time
             ];
             $this->bisAccount->save($loginInfo, ['id' => $bisAccount['id']]);
+            session('bis_uid', $bisAccount['id']);
+            cookie('isLogin', 1);
+            $this->success('登录成功', url('bis/index/index'));
 
         }else {
             return $this->fetch();
