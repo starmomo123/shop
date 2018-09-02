@@ -19,7 +19,10 @@ class Login extends Controller
         if($request->isPost()) {
             $data = input('post.');
             //不做数据的验证
-
+            $refer = $data['refer'];
+            if ($refer == '') {
+                $refer = url();
+            }
             $user['username'] = $data['username'];
             $ret = $this->user->get(['username' => $data['username']]);
             if (empty($ret)) {
@@ -38,10 +41,11 @@ class Login extends Controller
             $this->user->save($updateData, ['id' => $ret['id']]);
             session('uid', $ret['id']);
             cookie('isLogin', 1);
-            return redirect(url('index/index/index'));
+            return redirect($refer);
 
         }else {
-            return $this->fetch('login');
+            $refer = $request->server()['HTTP_REFERER'];
+            return $this->fetch('login', compact('refer'));
         }
     }
 

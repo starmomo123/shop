@@ -16,11 +16,11 @@ class Index extends Controller
 
     public function index()
     {
+        $title = '首页';
         //垃圾tp5框架
         $deal = array();
         $kaiweicai = array();
         $haochida = array();
-        $category = array();
         $ret = $this->deal->getAllDeal($deal);
         $this->getDealByType(25, $deal, $kaiweicai);
         $this->getDealByType(26, $deal, $haochida);
@@ -29,7 +29,7 @@ class Index extends Controller
             $this->error('查询商品失败!!!');
         }
 
-        return $this->fetch('', compact('kaiweicai', 'haochida', 'category'));
+        return $this->fetch('', compact('kaiweicai', 'haochida', 'category', 'title'));
     }
 
     protected function getDealByType($type, $deal, &$data) {

@@ -59,7 +59,7 @@
                                 </div>
                             </a>
                             <div class="contentbox">
-                                <a href="{:url('index/deal/index', ['id'=>$item.id])}" target="_blank">
+                                <a href="{:url('index/deal/detail', ['id'=>$item.id])}" target="_blank">
                                     <div class="header">
                                         <h4 class="title ">【{$item.location_count}店通用】{$item.name}</h4>
                                     </div>
@@ -93,7 +93,7 @@
                     <ul class="itemlist eight-row-height">
                         {foreach $haochida as $item}
                             <li class="j-card">
-                                <a>
+                                <a href="{:url('index/deal/detail', ['id'=>$item.id])}">
                                     <div class="imgbox">
                                         <ul class="marketing-label-container">
                                             <li class="marketing-label marketing-free-appoint"></li>
