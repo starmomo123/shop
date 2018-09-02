@@ -16,7 +16,7 @@ class Location extends Controller
         $this->category = model('category');
         $this->bis = model('bis');
         $this->bisLocation = model('BisLocation');
-        $this->bisAccount = model('BisAccount');
+        $this->bisAccount = model('bis_account');
     }
     public function index() {
         $bisAccount = $this->bisAccount->get(session('bis_uid'));

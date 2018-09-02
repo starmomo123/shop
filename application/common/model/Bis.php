@@ -19,4 +19,16 @@ class Bis extends Model
             return false;
         }
     }
+
+    public function bisList(&$bisList) {
+        $condition = [
+            'status' => ['>=', 0]
+        ];
+        $bisList = $this->where($condition)->select();
+        if($bisList) {
+            return true;
+        }else {
+            return false;
+        }
+    }
 }

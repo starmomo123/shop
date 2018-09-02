@@ -18,7 +18,7 @@ class Login extends Controller
         $this->category = model('category');
         $this->bis = model('bis');
         $this->bisLocation = model('BisLocation');
-        $this->bisAccount = model('BisAccount');
+        $this->bisAccount = model('bis_account');
     }
     public function index(Request $request) {
         $uid = session('bis_uid');
@@ -46,7 +46,8 @@ class Login extends Controller
             $this->bisAccount->save($loginInfo, ['id' => $bisAccount['id']]);
             session('bis_uid', $bisAccount['id']);
             cookie('isLogin', 1);
-            return redirect(url('bis/index/index'));
+            $this->success('登录成功', url('bis/index/index'));
+
         }else {
             return $this->fetch();
         }

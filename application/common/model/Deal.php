@@ -3,13 +3,15 @@ namespace app\common\model;
 
 use think\Model;
 
-class BisAccount extends Model
+class Deal extends Model
 {
     protected $autoWriteTimestamp = true;
 
     public function add($data) {
         $data['listorder'] = 10;
         $data['status'] = 0;
+        //消费卷数量
+        $data['buy_count'] = 100;
 
         $ret = $this->save($data);
         if($ret) {
@@ -19,7 +21,7 @@ class BisAccount extends Model
         }
     }
 
-    public function getBisAccount($bis_id, &$bisAccount) {
+    public function getDeal($bis_id, &$deal) {
         $condition = [
             'bis_id' => $bis_id,
             'status' => ['>=', 0]
@@ -27,10 +29,27 @@ class BisAccount extends Model
 
         $order = ['id' => 'asc'];
 
-        $bisAccount = $this->where($condition)
+        $deal = $this->where($condition)
             ->order($order)
             ->select();
-        if($bisAccount == false) {
+        if($deal == false) {
+            return false;
+        }else {
+            return true;
+        }
+    }
+
+    public function getAllDeal(&$deal) {
+        $condition = [
+            'status' => ['>=', 0]
+        ];
+
+        $order = ['id' => 'asc'];
+
+        $deal = $this->where($condition)
+            ->order($order)
+            ->select();
+        if($deal == false) {
             return false;
         }else {
             return true;

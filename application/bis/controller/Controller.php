@@ -17,7 +17,7 @@ class Controller extends BaseController
         if($this->user != null) {
             return ;
         }
-        $model = model('BisAccount');
+        $model = model('bis_account');
         $user = $model->get(session('bis_uid'));
         unset($user['password']);
         if($user == false) {
