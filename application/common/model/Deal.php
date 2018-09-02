@@ -38,4 +38,21 @@ class Deal extends Model
             return true;
         }
     }
+
+    public function getAllDeal(&$deal) {
+        $condition = [
+            'status' => ['>=', 0]
+        ];
+
+        $order = ['id' => 'asc'];
+
+        $deal = $this->where($condition)
+            ->order($order)
+            ->select();
+        if($deal == false) {
+            return false;
+        }else {
+            return true;
+        }
+    }
 }
