@@ -1,0 +1,31 @@
+<!--包含头部文件-->
+{include file="public/header" /}
+<div class="cl pd-5 bg-1 bk-gray mt-20"> 添加会员</div>
+<article class="page-container">
+	<form class="form form-horizontal" id="form-article-add" method="post" action="{:url('bisAccount/add')}">
+	基本信息：
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>会员名称：</label>
+			<div class="formControls col-xs-8 col-sm-3">
+				<input type="text" class="input-text" value="" placeholder="" id="" name="username">
+			</div>
+		</div>
+
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>会员密码：</label>
+			<div class="formControls col-xs-8 col-sm-3">
+				<input type="password" class="input-text" value="" placeholder="" id="" name="password">
+			</div>
+		</div>
+		
+		<div class="row cl">
+			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
+				<button class="btn btn-primary radius" type="submit"><i class="Hui-iconfont">&#xe632;</i> 申请</button>
+			</div>
+		</div>
+	</form>
+</article>
+<!--包含头部文件-->
+{include file="public/footer" /}
+</body>
+</html>
