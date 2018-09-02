@@ -33,13 +33,13 @@
                     <td class="j-cell">
                         <div class="buycount-ctrl">
                             <a class="j-ctrl ctrl minus disabled"><span class="horizontal"></span></a>
-                            <input type="text" value="{$count}" maxlength="10">
+                            <input class="count" type="text" value="{$count}" maxlength="10">
                             <a class="ctrl j-ctrl plus"><span class="horizontal"></span><span class="vertical"></span></a>
                         </div>
                         <span class="err-wrap j-err-wrap"></span>
                     </td>
                     <td class="j-cellActivity">-￥<span>1.40</span><br></td>
-                    <td class="price font14">¥<span class="j-sumPrice">{$totalPrice}</span></td>
+                    <td class="price font14">¥<span class="j-sumPrice totalPrice">{$totalPrice}</span></td>
                 </tr>
             </tbody>
         </table>
@@ -49,7 +49,7 @@
         <div class="final-price-area">应付总额：<span class="sum">￥<span class="price">{$shouldPrice}</span></span></div>
 
         <div class="page-button-wrap">
-            <a href="" class="btn btn-primary">确认</a>
+            <button class="o2o_pay btn btn-primary">确认</button>
         </div>
 
         <div style="width: 100%;min-width: 1200px;height: 5px;background: #dbdbdb;margin: 50px 0 20px;"></div>
@@ -101,6 +101,13 @@
             var num = $(".buycount-ctrl input").val();
             num++;
             inputChange(num);
+        });
+
+        $(".o2o_pay").click(function () {
+            var count = $(".count").val();
+            var totalPrice = $(".totalPrice").text();
+            var url = "{:url('index/order/index', ['id'=>$deal.id])}"+"&count="+count+"&totalPrice="+totalPrice;
+            self.location = url;
         });
     </script>
 </body>
